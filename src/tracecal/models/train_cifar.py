@@ -5,6 +5,7 @@ from __future__ import annotations
 import math
 import time
 
+
 import numpy as np
 import torch
 import torch.nn.functional as F
@@ -34,7 +35,6 @@ def _augment(xb: torch.Tensor, gen: torch.Generator) -> torch.Tensor:
     out = padded[bi, ci, rows, cols]
     flip = torch.rand(b, generator=gen, device=dev) < 0.5
     return torch.where(flip[:, None, None, None], out.flip(-1), out)
-
 
 @torch.no_grad()
 def evaluate(model: Wrapped, x: np.ndarray, y: np.ndarray, bs: int = 500) -> float:
