@@ -1,0 +1,26 @@
+{
+ "phases": [
+  [
+   {
+    "name": "v5b_in_deit_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-cbar in_deit_s --batch-size 256 --workers 10 && uv run tracecal frontier-v4-cbar in_deit_s"
+   },
+   {
+    "name": "v5b_in_effnet_b0",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-cbar in_effnet_b0 --batch-size 256 --workers 10 && uv run tracecal frontier-v4-cbar in_effnet_b0"
+   },
+   {
+    "name": "v5b_in_regnety16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-cbar in_regnety16 --batch-size 256 --workers 10 && uv run tracecal frontier-v4-cbar in_regnety16"
+   },
+   {
+    "name": "v5b_in_convnext_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-cbar in_convnext_s --batch-size 256 --workers 10 && uv run tracecal frontier-v4-cbar in_convnext_s"
+   },
+   {
+    "name": "v5b_in_vit_s16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-cbar in_vit_s16 --batch-size 256 --workers 10 && uv run tracecal frontier-v4-cbar in_vit_s16"
+   }
+  ]
+ ]
+}
