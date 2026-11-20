@@ -1,0 +1,26 @@
+{
+ "phases": [
+  [
+   {
+    "name": "v6dev_in_rn50",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera-dev in_rn50 --batch-size 128 --workers 8 && CUDA_VISIBLE_DEVICES= uv run python scripts/explore_v6.py in_rn50"
+   },
+   {
+    "name": "v6dev_in_convnext_t",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera-dev in_convnext_t --batch-size 128 --workers 8 && CUDA_VISIBLE_DEVICES= uv run python scripts/explore_v6.py in_convnext_t"
+   },
+   {
+    "name": "v6dev_in_swin_t",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera-dev in_swin_t --batch-size 128 --workers 8 && CUDA_VISIBLE_DEVICES= uv run python scripts/explore_v6.py in_swin_t"
+   },
+   {
+    "name": "v6dev_in_vitb16",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera-dev in_vitb16 --batch-size 128 --workers 8 && CUDA_VISIBLE_DEVICES= uv run python scripts/explore_v6.py in_vitb16"
+   },
+   {
+    "name": "v6dev_in_clip_b16",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera-dev in_clip_b16 --batch-size 128 --workers 8 && CUDA_VISIBLE_DEVICES= uv run python scripts/explore_v6.py in_clip_b16"
+   }
+  ]
+ ]
+}
