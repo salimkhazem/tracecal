@@ -1,0 +1,70 @@
+{
+ "phases": [
+  [
+   {
+    "name": "train_c10_vits16_s5",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar10 vits16 5"
+   },
+   {
+    "name": "train_c10_resnet18_s5",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar10 resnet18 5"
+   },
+   {
+    "name": "train_c100_vits16_s5",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar100 vits16 5"
+   },
+   {
+    "name": "train_c100_resnet18_s5",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar100 resnet18 5"
+   },
+   {
+    "name": "train_c10_vits16_s6",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar10 vits16 6"
+   },
+   {
+    "name": "train_c10_resnet18_s6",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar10 resnet18 6"
+   },
+   {
+    "name": "train_c100_vits16_s6",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar100 vits16 6"
+   },
+   {
+    "name": "train_c100_resnet18_s6",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar100 resnet18 6"
+   },
+   {
+    "name": "train_c10_vits16_s7",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar10 vits16 7"
+   },
+   {
+    "name": "train_c10_resnet18_s7",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar10 resnet18 7"
+   },
+   {
+    "name": "train_c100_vits16_s7",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar100 vits16 7"
+   },
+   {
+    "name": "train_c100_resnet18_s7",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar100 resnet18 7"
+   },
+   {
+    "name": "train_c10_vits16_s8",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar10 vits16 8"
+   },
+   {
+    "name": "train_c10_resnet18_s8",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar10 resnet18 8"
+   },
+   {
+    "name": "train_c100_vits16_s8",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar100 vits16 8"
+   },
+   {
+    "name": "train_c100_resnet18_s8",
+    "cmd": "source configs/ws/env.sh && uv run tracecal train-cifar cifar100 resnet18 8"
+   }
+  ]
+ ]
+}
