@@ -1,0 +1,60 @@
+# SECONDARY (post hoc, not pre-registered; added 2026-10-10): restorer-strength sensitivity of RU-CP.
+# Each bank holds ONLY the six RU-CP restorers at another magnitude; extraction adds the hflip view as for every bank.
+# "strong" uses the magnitudes of the pre-defined M = 2 probe set (protocol.yaml: probes.m2_extra);
+# "weak" halves every default magnitude (brightness delta, contrast/saturation factor - 1, sharpen/blur sigma).
+weak:
+  cifar:
+    - {name: bright_up_w,   op: brightness, delta: 0.10}
+    - {name: bright_down_w, op: brightness, delta: -0.10}
+    - {name: contrast_up_w, op: contrast,   factor: 1.25}
+    - {name: sat_up_w,      op: saturation, factor: 1.35}
+    - {name: sharpen_w,     op: sharpen,    sigma: 0.35, amount: 1.0}
+    - {name: blur_w,        op: blur,       sigma: 0.35}
+  imagenet:
+    - {name: bright_up_w,   op: brightness, delta: 0.10}
+    - {name: bright_down_w, op: brightness, delta: -0.10}
+    - {name: contrast_up_w, op: contrast,   factor: 1.25}
+    - {name: sat_up_w,      op: saturation, factor: 1.35}
+    - {name: sharpen_w,     op: sharpen,    sigma: 0.75, amount: 1.0}
+    - {name: blur_w,        op: blur,       sigma: 0.75}
+strong:
+  cifar:
+    - {name: bright_up_s,   op: brightness, delta: 0.35}
+    - {name: bright_down_s, op: brightness, delta: -0.35}
+    - {name: contrast_up_s, op: contrast,   factor: 2.00}
+    - {name: sat_up_s,      op: saturation, factor: 2.50}
+    - {name: sharpen_s,     op: sharpen,    sigma: 1.40, amount: 1.0}
+    - {name: blur_s,        op: blur,       sigma: 1.40}
+  imagenet:
+    - {name: bright_up_s,   op: brightness, delta: 0.35}
+    - {name: bright_down_s, op: brightness, delta: -0.35}
+    - {name: contrast_up_s, op: contrast,   factor: 2.00}
+    - {name: sat_up_s,      op: saturation, factor: 2.50}
+    - {name: sharpen_s,     op: sharpen,    sigma: 3.00, amount: 1.0}
+    - {name: blur_s,        op: blur,       sigma: 3.00}
+# SECONDARY (2026-10-23; audits/baseline_ttacp_policies.yaml): the augmentation policies of TTA-CP (Shanmugam et al.,
+# CVPR 2025), deterministic reproduction. Used ONLY by the TTA-CP baselines; RBE-CP never sees these views.
+ttacp:
+  imagenet:
+    - {name: sharp_up,      op: sharpness,    factor: 2.0}
+    - {name: sharp_down,    op: sharpness,    factor: 0.5}
+    - {name: autocontrast,  op: autocontrast}
+    - {name: invert,        op: invert}
+    - {name: blur_tta,      op: blur,         sigma: 1.0}
+    - {name: posterize,     op: posterize,    bits: 4}
+    - {name: shear,         op: affine,       angle: 0.0, translate: [0, 0], shear: 15.0}
+    - {name: translate,     op: affine,       angle: 0.0, translate: [22, 22], shear: 0.0}
+    - {name: color_jitter,  op: color_jitter, brightness: 1.2, contrast: 1.2, saturation: 1.2, hue: 0.05}
+    - {name: crop,          op: center_resized_crop, size: 196}
+    - {name: rotate,        op: affine,       angle: 15.0, translate: [0, 0], shear: 0.0}
+    - {name: shift_crop,    op: shift_crop,   pad: 4, offset: [8, 8]}
+# CAMERA BANK (2026-11-04, development only until pre-registration v6): image-adaptive restorers for real captures,
+# motivated by the v5d failure (ImageNet-ES). Designed on ImageNet-ES es-val with the v2 development models; es-test and
+# the fresh models are not touched before v6 is frozen. Extraction adds the hflip view as for every bank.
+camera:
+  imagenet:
+    - {name: auto_gamma, op: auto_gamma, target: 0.45}
+    - {name: stretch,    op: stretch,    q_lo: 0.01, q_hi: 0.99}
+    - {name: equalize,   op: equalize}
+    - {name: grayworld,  op: grayworld}
+    - {name: median3,    op: median3}
