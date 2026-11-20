@@ -1,0 +1,134 @@
+{
+ "phases": [
+  [
+   {
+    "name": "extract_test_weak_c10_vits16_s1",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_vits16_s1 cifar10 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c10_vits16_s1",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_vits16_s1 cifar10 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c100_vits16_s1",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_vits16_s1 cifar100 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c100_vits16_s1",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_vits16_s1 cifar100 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c10_vits16_s2",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_vits16_s2 cifar10 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c10_vits16_s2",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_vits16_s2 cifar10 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c100_vits16_s2",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_vits16_s2 cifar100 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c100_vits16_s2",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_vits16_s2 cifar100 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c10_vits16_s3",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_vits16_s3 cifar10 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c10_vits16_s3",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_vits16_s3 cifar10 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c100_vits16_s3",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_vits16_s3 cifar100 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c100_vits16_s3",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_vits16_s3 cifar100 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c10_vits16_s4",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_vits16_s4 cifar10 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c10_vits16_s4",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_vits16_s4 cifar10 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c100_vits16_s4",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_vits16_s4 cifar100 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c100_vits16_s4",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_vits16_s4 cifar100 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c10_resnet18_s1",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_resnet18_s1 cifar10 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c10_resnet18_s1",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_resnet18_s1 cifar10 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c100_resnet18_s1",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_resnet18_s1 cifar100 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c100_resnet18_s1",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_resnet18_s1 cifar100 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c10_resnet18_s2",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_resnet18_s2 cifar10 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c10_resnet18_s2",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_resnet18_s2 cifar10 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c100_resnet18_s2",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_resnet18_s2 cifar100 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c100_resnet18_s2",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_resnet18_s2 cifar100 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c10_resnet18_s3",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_resnet18_s3 cifar10 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c10_resnet18_s3",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_resnet18_s3 cifar10 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c100_resnet18_s3",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_resnet18_s3 cifar100 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c100_resnet18_s3",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_resnet18_s3 cifar100 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c10_resnet18_s4",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_resnet18_s4 cifar10 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c10_resnet18_s4",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_resnet18_s4 cifar10 --bank strong --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_weak_c100_resnet18_s4",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_resnet18_s4 cifar100 --bank weak --only test --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_test_strong_c100_resnet18_s4",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_resnet18_s4 cifar100 --bank strong --only test --batch-size 256 --workers 8"
+   }
+  ]
+ ]
+}
