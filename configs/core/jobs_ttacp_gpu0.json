@@ -1,0 +1,18 @@
+{
+ "phases": [
+  [
+   {
+    "name": "ttacp_in_deit_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-ttacp in_deit_s --batch-size 128 --workers 10"
+   },
+   {
+    "name": "ttacp_in_effnet_b0",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-ttacp in_effnet_b0 --batch-size 128 --workers 10"
+   },
+   {
+    "name": "ttacp_in_regnety16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-ttacp in_regnety16 --batch-size 128 --workers 10"
+   }
+  ]
+ ]
+}
