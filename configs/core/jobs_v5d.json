@@ -1,0 +1,86 @@
+{
+ "phases": [
+  [
+   {
+    "name": "v5d_in_deit_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_deit_s --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_deit_s"
+   },
+   {
+    "name": "v5d_in_effnet_b0",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_effnet_b0 --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_effnet_b0"
+   },
+   {
+    "name": "v5d_in_regnety16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_regnety16 --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_regnety16"
+   },
+   {
+    "name": "v5d_in_convnext_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_convnext_s --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_convnext_s"
+   },
+   {
+    "name": "v5d_in_vit_s16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_vit_s16 --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_vit_s16"
+   },
+   {
+    "name": "v5d_in_densenet121",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_densenet121 --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_densenet121"
+   },
+   {
+    "name": "v5d_in_mnv3_l",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_mnv3_l --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_mnv3_l"
+   },
+   {
+    "name": "v5d_in_deit3_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_deit3_s --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_deit3_s"
+   },
+   {
+    "name": "v5d_in_maxvit_t",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_maxvit_t --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_maxvit_t"
+   },
+   {
+    "name": "v5d_in_mixer_b16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_mixer_b16 --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_mixer_b16"
+   }
+  ],
+  [
+   {
+    "name": "ttacp_in_convnext_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-ttacp in_convnext_s --batch-size 128 --workers 10"
+   },
+   {
+    "name": "ttacp_in_vit_s16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-ttacp in_vit_s16 --batch-size 128 --workers 10"
+   }
+  ],
+  [
+   {
+    "name": "v5d_in_rn50_tv1",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_rn50_tv1 --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_rn50_tv1"
+   },
+   {
+    "name": "v5d_in_augmix_rn50",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_augmix_rn50 --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_augmix_rn50"
+   },
+   {
+    "name": "v5d_in_deepaug_rn50",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_deepaug_rn50 --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_deepaug_rn50"
+   },
+   {
+    "name": "v5d_in_swin_b",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_swin_b --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_swin_b"
+   },
+   {
+    "name": "v5d_in_convnext_l",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_convnext_l --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_convnext_l"
+   },
+   {
+    "name": "v5d_in_vit_l16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_vit_l16 --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_vit_l16"
+   },
+   {
+    "name": "v5d_in_clip_l14",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-es in_clip_l14 --batch-size 128 --workers 8 && uv run tracecal frontier-v4-es in_clip_l14"
+   }
+  ]
+ ]
+}
