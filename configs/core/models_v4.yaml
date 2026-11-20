@@ -1,0 +1,9 @@
+# Fresh ImageNet models for the v4 confirmation (added 2026-10-11, before any v4 number existed on them).
+# Not used by any v1/v2/v3 analysis. Chosen for architecture diversity (CNN, mobile CNN, ViT, hybrid, MLP), all with a
+# published timm top-1 row at 224 (results-imagenet.csv).
+imagenet:
+  densenet121: {timm: densenet121.tv_in1k}
+  mnv3_l:      {timm: mobilenetv3_large_100.ra_in1k}
+  deit3_s:     {timm: deit3_small_patch16_224.fb_in1k}
+  maxvit_t:    {timm: maxvit_tiny_tf_224.in1k}
+  mixer_b16:   {timm: mixer_b16_224.goog_in21k_ft_in1k}
