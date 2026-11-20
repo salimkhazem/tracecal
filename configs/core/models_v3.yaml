@@ -1,0 +1,8 @@
+# Fresh ImageNet models for the v3 confirmation (added 2026-10-10). Kept out of the frozen v2 protocol.
+# Not used by any v1/v2 analysis. Chosen for architecture/recipe diversity before any v3 number existed.
+imagenet:
+  deit_s:     {timm: deit_small_patch16_224.fb_in1k}
+  effnet_b0:  {timm: efficientnet_b0.ra_in1k}
+  regnety16:  {timm: regnety_016.tv2_in1k}
+  convnext_s: {timm: convnext_small.fb_in1k}
+  vit_s16:    {timm: vit_small_patch16_224.augreg_in21k_ft_in1k}
