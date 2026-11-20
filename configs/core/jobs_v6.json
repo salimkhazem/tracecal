@@ -1,0 +1,46 @@
+{
+ "phases": [
+  [
+   {
+    "name": "v6x_in_deit_s",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_deit_s --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_effnet_b0",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_effnet_b0 --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_regnety16",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_regnety16 --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_convnext_s",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_convnext_s --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_vit_s16",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_vit_s16 --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_densenet121",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_densenet121 --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_mnv3_l",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_mnv3_l --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_deit3_s",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_deit3_s --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_maxvit_t",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_maxvit_t --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_mixer_b16",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_mixer_b16 --batch-size 128 --workers 8"
+   }
+  ]
+ ]
+}
