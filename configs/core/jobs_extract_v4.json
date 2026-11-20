@@ -1,0 +1,48 @@
+{
+ "phases": [
+  [
+   {
+    "name": "g0_in_densenet121",
+    "cmd": "source configs/ws/env.sh && uv run tracecal g0-accuracy in_densenet121"
+   },
+   {
+    "name": "g0_in_mnv3_l",
+    "cmd": "source configs/ws/env.sh && uv run tracecal g0-accuracy in_mnv3_l"
+   },
+   {
+    "name": "g0_in_deit3_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal g0-accuracy in_deit3_s"
+   },
+   {
+    "name": "g0_in_maxvit_t",
+    "cmd": "source configs/ws/env.sh && uv run tracecal g0-accuracy in_maxvit_t"
+   },
+   {
+    "name": "g0_in_mixer_b16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal g0-accuracy in_mixer_b16"
+   }
+  ],
+  [
+   {
+    "name": "extract_all_in_densenet121",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_densenet121 imagenet --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_all_in_mnv3_l",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_mnv3_l imagenet --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_all_in_deit3_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_deit3_s imagenet --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_all_in_maxvit_t",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_maxvit_t imagenet --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_all_in_mixer_b16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_mixer_b16 imagenet --batch-size 256 --workers 10"
+   }
+  ]
+ ]
+}
