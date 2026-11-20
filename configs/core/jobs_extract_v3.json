@@ -1,0 +1,152 @@
+{
+ "phases": [
+  [
+   {
+    "name": "g0_in_deit_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal g0-accuracy in_deit_s"
+   },
+   {
+    "name": "g0_in_effnet_b0",
+    "cmd": "source configs/ws/env.sh && uv run tracecal g0-accuracy in_effnet_b0"
+   },
+   {
+    "name": "g0_in_regnety16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal g0-accuracy in_regnety16"
+   },
+   {
+    "name": "g0_in_convnext_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal g0-accuracy in_convnext_s"
+   },
+   {
+    "name": "g0_in_vit_s16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal g0-accuracy in_vit_s16"
+   }
+  ],
+  [
+   {
+    "name": "extract_c10_vits16_s5",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_vits16_s5 cifar10 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c10_resnet18_s5",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_resnet18_s5 cifar10 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c100_vits16_s5",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_vits16_s5 cifar100 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c100_resnet18_s5",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_resnet18_s5 cifar100 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c10_vits16_s6",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_vits16_s6 cifar10 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c10_resnet18_s6",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_resnet18_s6 cifar10 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c100_vits16_s6",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_vits16_s6 cifar100 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c100_resnet18_s6",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_resnet18_s6 cifar100 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c10_vits16_s7",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_vits16_s7 cifar10 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c10_resnet18_s7",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_resnet18_s7 cifar10 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c100_vits16_s7",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_vits16_s7 cifar100 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c100_resnet18_s7",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_resnet18_s7 cifar100 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c10_vits16_s8",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_vits16_s8 cifar10 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c10_resnet18_s8",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c10_resnet18_s8 cifar10 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c100_vits16_s8",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_vits16_s8 cifar100 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_c100_resnet18_s8",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all c100_resnet18_s8 cifar100 --batch-size 256 --workers 8"
+   },
+   {
+    "name": "extract_pool_in_deit_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_deit_s imagenet --only pool --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_pool_in_effnet_b0",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_effnet_b0 imagenet --only pool --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_pool_in_regnety16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_regnety16 imagenet --only pool --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_pool_in_convnext_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_convnext_s imagenet --only pool --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_pool_in_vit_s16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_vit_s16 imagenet --only pool --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_test_in_deit_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_deit_s imagenet --only test --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_test_in_effnet_b0",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_effnet_b0 imagenet --only test --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_test_in_regnety16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_regnety16 imagenet --only test --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_test_in_convnext_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_convnext_s imagenet --only test --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_test_in_vit_s16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_vit_s16 imagenet --only test --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_naturals_in_deit_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_deit_s imagenet --only naturals --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_naturals_in_effnet_b0",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_effnet_b0 imagenet --only naturals --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_naturals_in_regnety16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_regnety16 imagenet --only naturals --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_naturals_in_convnext_s",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_convnext_s imagenet --only naturals --batch-size 256 --workers 10"
+   },
+   {
+    "name": "extract_naturals_in_vit_s16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_vit_s16 imagenet --only naturals --batch-size 256 --workers 10"
+   }
+  ]
+ ]
+}
