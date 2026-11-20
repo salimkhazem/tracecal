@@ -1,0 +1,66 @@
+{
+ "phases": [
+  [
+   {
+    "name": "extract_pool_in_rn50",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_rn50 imagenet --only pool --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_pool_in_convnext_t",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_convnext_t imagenet --only pool --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_pool_in_swin_t",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_swin_t imagenet --only pool --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_pool_in_vitb16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_vitb16 imagenet --only pool --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_pool_in_clip_b16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_clip_b16 imagenet --only pool --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_test_in_rn50",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_rn50 imagenet --only test --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_test_in_convnext_t",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_convnext_t imagenet --only test --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_test_in_swin_t",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_swin_t imagenet --only test --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_test_in_vitb16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_vitb16 imagenet --only test --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_test_in_clip_b16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_clip_b16 imagenet --only test --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_nat_in_rn50",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_rn50 imagenet --only naturals --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_nat_in_convnext_t",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_convnext_t imagenet --only naturals --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_nat_in_swin_t",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_swin_t imagenet --only naturals --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_nat_in_vitb16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_vitb16 imagenet --only naturals --batch-size 256 --workers 12"
+   },
+   {
+    "name": "extract_nat_in_clip_b16",
+    "cmd": "source configs/ws/env.sh && uv run tracecal extract-all in_clip_b16 imagenet --only naturals --batch-size 256 --workers 12"
+   }
+  ]
+ ]
+}
