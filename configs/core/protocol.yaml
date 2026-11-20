@@ -1,0 +1,181 @@
+# TRACE-Cal frozen protocol (pre-registered 2026-10-09, before any experiment was run or any number computed).
+# Changes after results exist must be logged in audits/gates.yaml under `amendments` (date, reason, results seen).
+version: 1
+
+alpha_primary: 0.10
+alpha_secondary: [0.05, 0.20]
+
+# ---------------------------------------------------------------------------------------------------------------
+# Probe bank (K = 11). Applied to images in [0,1] at the dataset's native resolution (CIFAR 32 px, ImageNet 224 px
+# crops), BEFORE any model-specific resize / normalisation. Response coordinate for probe k:
+#   R_k(x) = log softmax(f(T_k x))[y0] - log softmax(f(x))[y0],   y0 = argmax f(x).
+# The horizontal flip view is extracted as well but is NOT part of R (it only feeds the TTA baselines).
+# ---------------------------------------------------------------------------------------------------------------
+probes:
+  cifar:
+    - {name: bright_up,     op: brightness, delta: 0.20}
+    - {name: bright_down,   op: brightness, delta: -0.20}
+    - {name: contrast_up,   op: contrast,   factor: 1.50}
+    - {name: contrast_down, op: contrast,   factor: 0.50}
+    - {name: sat_up,        op: saturation, factor: 1.70}
+    - {name: sat_down,      op: saturation, factor: 0.30}
+    - {name: blur,          op: blur,       sigma: 0.70}
+    - {name: sharpen,       op: sharpen,    sigma: 0.70, amount: 1.0}
+    - {name: noise,         op: noise,      sigma: 0.05}
+    - {name: jpeg,          op: jpeg,       quality: 30}
+    - {name: downup,        op: downup,     factor: 0.50}
+  imagenet:
+    - {name: bright_up,     op: brightness, delta: 0.20}
+    - {name: bright_down,   op: brightness, delta: -0.20}
+    - {name: contrast_up,   op: contrast,   factor: 1.50}
+    - {name: contrast_down, op: contrast,   factor: 0.50}
+    - {name: sat_up,        op: saturation, factor: 1.70}
+    - {name: sat_down,      op: saturation, factor: 0.30}
+    - {name: blur,          op: blur,       sigma: 1.50}
+    - {name: sharpen,       op: sharpen,    sigma: 1.50, amount: 1.0}
+    - {name: noise,         op: noise,      sigma: 0.08}
+    - {name: jpeg,          op: jpeg,       quality: 30}
+    - {name: downup,        op: downup,     factor: 0.50}
+  extra_views: [hflip]
+  noise_seed: 20261009         # the noise probe adds ONE fixed standard-normal field per resolution (PCG64)
+  # Ablation only (M = 2): a second, stronger magnitude per probe. Not part of the default R.
+  m2_extra:
+    cifar:
+      - {name: bright_up2,     op: brightness, delta: 0.35}
+      - {name: bright_down2,   op: brightness, delta: -0.35}
+      - {name: contrast_up2,   op: contrast,   factor: 2.00}
+      - {name: contrast_down2, op: contrast,   factor: 0.30}
+      - {name: sat_up2,        op: saturation, factor: 2.50}
+      - {name: sat_down2,      op: saturation, factor: 0.00}
+      - {name: blur2,          op: blur,       sigma: 1.40}
+      - {name: sharpen2,       op: sharpen,    sigma: 1.40, amount: 1.0}
+      - {name: noise2,         op: noise,      sigma: 0.10}
+      - {name: jpeg2,          op: jpeg,       quality: 10}
+      - {name: downup2,        op: downup,     factor: 0.25}
+    imagenet:
+      - {name: bright_up2,     op: brightness, delta: 0.35}
+      - {name: bright_down2,   op: brightness, delta: -0.35}
+      - {name: contrast_up2,   op: contrast,   factor: 2.00}
+      - {name: contrast_down2, op: contrast,   factor: 0.30}
+      - {name: sat_up2,        op: saturation, factor: 2.50}
+      - {name: sat_down2,      op: saturation, factor: 0.00}
+      - {name: blur2,          op: blur,       sigma: 3.00}
+      - {name: sharpen2,       op: sharpen,    sigma: 3.00, amount: 1.0}
+      - {name: noise2,         op: noise,      sigma: 0.16}
+      - {name: jpeg2,          op: jpeg,       quality: 10}
+      - {name: downup2,        op: downup,     factor: 0.25}
+
+# ---------------------------------------------------------------------------------------------------------------
+# Synthetic shift programs (Pi) used to build the orbit-augmented calibration set P'. Our own generic ops (same code
+# as the probes), parameterised differently from the CIFAR-C / ImageNet-C generators. Every calibration-pool image
+# is extracted in 9 versions: v0 clean, v1..v7 one family each (random severity, seeded by image id and family),
+# v8 a composition of two distinct random families. P'(p0, allowed) picks ONE version per image:
+#   identity w.p. p0; else the composed version w.p. q_comp (if both its families are allowed), else a single-family
+#   version uniformly over the allowed families. One version per image keeps P' i.i.d.
+# ---------------------------------------------------------------------------------------------------------------
+programs:
+  families: [noise, blur, brightness, contrast, jpeg, downup, saturation]
+  base_seed: 20261009          # per-image program parameters and noise: derive_seed(base_seed, ...)
+  q_comp: 0.20
+  cifar:
+    noise:      {sigma: [0.02, 0.12]}
+    blur:       {sigma: [0.30, 1.50]}
+    brightness: {abs_delta: [0.05, 0.40]}          # random sign
+    contrast:   {factor: [0.15, 0.90]}
+    jpeg:       {quality: [8, 60]}                  # integer, inclusive
+    downup:     {factor: [0.25, 0.75]}
+    saturation: {low: [0.0, 0.7], high: [1.3, 2.5]}  # low or high branch w.p. 1/2
+  imagenet:
+    noise:      {sigma: [0.02, 0.40]}
+    blur:       {sigma: [0.50, 5.00]}
+    brightness: {abs_delta: [0.05, 0.50]}
+    contrast:   {factor: [0.05, 0.90]}
+    jpeg:       {quality: [5, 60]}
+    downup:     {factor: [0.15, 0.75]}
+    saturation: {low: [0.0, 0.7], high: [1.3, 2.5]}
+
+# Pre-registered corruption labels (Protocol A) and leave-family-out map (Protocol B).
+corruptions:
+  all: [gaussian_noise, shot_noise, impulse_noise, speckle_noise, defocus_blur, glass_blur, motion_blur, zoom_blur,
+        gaussian_blur, snow, frost, fog, brightness, spatter, contrast, elastic_transform, pixelate,
+        jpeg_compression, saturate]
+  in_bank: [gaussian_noise, shot_noise, speckle_noise, defocus_blur, gaussian_blur, brightness, contrast, saturate,
+            jpeg_compression, pixelate]
+  near_bank: [impulse_noise, glass_blur, motion_blur, zoom_blur]
+  out_of_bank: [snow, frost, fog, spatter, elastic_transform]
+  categories:
+    noise:   [gaussian_noise, shot_noise, impulse_noise, speckle_noise]
+    blur:    [defocus_blur, glass_blur, motion_blur, zoom_blur, gaussian_blur]
+    weather: [snow, frost, fog, brightness, spatter]
+    digital: [contrast, elastic_transform, pixelate, jpeg_compression, saturate]
+  lfo_removed_families:
+    noise:   [noise]
+    blur:    [blur]
+    weather: [brightness, contrast]
+    digital: [contrast, downup, jpeg, saturation]
+  severities: [1, 2, 3, 4, 5]
+
+# ---------------------------------------------------------------------------------------------------------------
+# Splits (all seeded; IDs are disjoint by construction and checked by tests).
+# ---------------------------------------------------------------------------------------------------------------
+splits:
+  cifar:
+    holdout_from_train: 10000        # stratified, seed 0; models are trained on the remaining 40000
+    holdout_seed: 0
+    pool: {fit: 3000, tune: 2000, cal: 5000}
+    pool_resplits: [0, 1, 2, 3, 4]
+    test: full                       # 10000 test images; CIFAR-C rows are indexed like the test set
+  imagenet:
+    val_pool: 25000                  # stratified by class, seed 0 (25 per class); the other 25000 = test pool
+    val_seed: 0
+    pool: {fit: 7500, tune: 5000, cal: 12500}
+    pool_resplits: [0, 1, 2, 3, 4]
+    c_subsample: 10000               # stratified 10 per class from the test pool, seed 0; same IDs for clean + all C
+    clean_preprocess: {resize: 256, crop: 224, interpolation: bilinear}   # matches ImageNet-C generation
+
+models:
+  cifar:
+    resnet18: {arch: resnet18_cifar, epochs: 200, batch: 128, lr: 0.1, momentum: 0.9, wd: 5.0e-4, schedule: cosine,
+               aug: [crop_pad4, hflip], seeds: [0, 1, 2, 3, 4]}
+    vits16:   {arch: vit_small_patch16_224.augreg_in21k, input: 224, epochs: 5, batch: 128, optimizer: adamw,
+               lr: 5.0e-5, wd: 0.05, warmup_epochs: 1, schedule: cosine, aug: [crop_pad4, hflip],
+               seeds: [0, 1, 2, 3, 4]}
+  imagenet:
+    rn50:       {timm: resnet50.tv2_in1k}
+    vitb16:     {timm: vit_base_patch16_224.augreg2_in21k_ft_in1k}
+    convnext_t: {timm: convnext_tiny.fb_in1k}
+    swin_t:     {timm: swin_tiny_patch4_window7_224.ms_in1k}
+    clip_b16:   {open_clip: ViT-B-16-quickgelu, pretrained: openai, zero_shot_templates: openai_imagenet_80}
+
+# ---------------------------------------------------------------------------------------------------------------
+# Methods and the ONLY hyper-parameter grids that may be searched. Selection uses the tune split's 9 synthetic
+# pool versions as held-out conditions (never a test shift): minimise MCS subject to mean set size <= 1.15 x that of
+# P'-marginal CP (with its own selected p0) on the same tune conditions; ties -> smaller B, then kmeans.
+# ---------------------------------------------------------------------------------------------------------------
+methods:
+  score_primary: lac
+  scores_secondary: [aps, raps]
+  raps_grid: {k_reg: [1, 2, 5], lam: [0.001, 0.01, 0.1]}
+  p0_grid: [0.20, 0.35, 0.50]
+  mondrian:
+    B_grid: [4, 8, 16, 32]
+    partition_grid: [kmeans, tree]
+    min_cell_cal: {cifar: 150, imagenet: 300}   # translated to the fit split proportionally
+  feature_sets:
+    trace:     [R, conf, entropy]               # ours
+    scalar_s:  [s, conf, entropy]               # s = mean_k KL(pi_0 || pi_k)  (prior-art TTA disagreement)
+    conf:      [conf, entropy]
+    embed:     [pca11, conf, entropy]           # white-box, dimension-matched to R (11)
+    shiftpred: [shift_probs, conf, entropy]     # white-box learned shift-family classifier on embeddings (fit split)
+  gate: {knn_k: 10, beta: 0.05, beta_grid: [0.01, 0.05, 0.10], features: [R, conf, entropy]}
+  tta: {views: all13, objective: cross_entropy, steps: 300, lr: 0.05}
+  ks_adjust: {eta: 0.10, crossfit: 2}           # adapted from Doula 2026 (TCC-KS), surrogate T = 1 - max prob
+  weighted: {classifier: logistic, C: 1.0, crossfit: 2, features: [embed_pca64, trace]}
+  sac: {severity_bins: 5}                       # Salvador et al. 2021 surrogate sets: family x severity quintile + clean
+  qtc: {score: max_softmax}                     # Yilmaz & Heckel: beta = min(beta_T, beta_S)
+
+metrics:
+  primary: mcs                                  # mean over conditions of max(0, 1 - alpha - coverage)
+  ece_bins: 15
+  sscv_bins: [[0, 1], [2, 3], [4, 10], [11, 100], [101, 1000]]
+  bootstrap: {n: 1000, seed: 0, hierarchical: [seed, split, image]}
