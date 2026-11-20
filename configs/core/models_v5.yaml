@@ -1,0 +1,15 @@
+# Held-out SCALE + ROBUST-TRAINING evaluation of the frozen v3 method (audits/gates_v5.yaml), added 2026-10-22
+# before any number existed on these models. None of them was used by any v1-v4 analysis or design decision.
+# All evaluated at 224 like every other ImageNet model of the study.
+imagenet:
+  vit_l16:      {timm: vit_large_patch16_224.augreg_in21k_ft_in1k}
+  convnext_l:   {timm: convnext_large.fb_in22k_ft_in1k}
+  swin_b:       {timm: swin_base_patch4_window7_224.ms_in22k_ft_in1k}
+  clip_l14:     {open_clip: ViT-L-14-quickgelu, pretrained: openai, zero_shot_templates: openai_imagenet_80}
+  # same architecture, three training recipes (standard / AugMix / DeepAugment+AugMix); RobustBench checkpoints,
+  # SHA-256 0802101b... (AugMix) and 0ad7f216... (DeepAugment+AugMix), downloaded 2026-10-22 into .cache/robust/
+  rn50_tv1:     {timm: resnet50.tv_in1k}
+  augmix_rn50:  {robustbench: Hendrycks2020AugMix, arch: resnet50, published_top1: 77.34,
+                 sha256: 0802101bd2f7cdfec82c3a54b344645973bfab41c7a357b04bdc866361c40fd7}
+  deepaug_rn50: {robustbench: Hendrycks2020Many, arch: resnet50, published_top1: 76.86,
+                 sha256: 0ad7f216f709c61bc7e5575ec1d5f3d65eba6bdfef19b2a3b762ce2ef5c93fa8}
