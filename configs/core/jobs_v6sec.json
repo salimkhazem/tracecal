@@ -1,0 +1,34 @@
+{
+ "phases": [
+  [
+   {
+    "name": "v6x_in_rn50_tv1",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_rn50_tv1 --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_augmix_rn50",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_augmix_rn50 --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_deepaug_rn50",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_deepaug_rn50 --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_swin_b",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_swin_b --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_convnext_l",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_convnext_l --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_vit_l16",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_vit_l16 --batch-size 128 --workers 8"
+   },
+   {
+    "name": "v6x_in_clip_l14",
+    "cmd": "source configs/ws/env.sh && ulimit -n $(ulimit -Hn) && uv run tracecal extract-camera in_clip_l14 --batch-size 128 --workers 8"
+   }
+  ]
+ ]
+}
