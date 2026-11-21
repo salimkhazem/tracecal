@@ -274,25 +274,4 @@ uv run python scripts/report_nonempty.py cifar
 uv run python scripts/report_mixed_stream.py cifar
 ```
 
-### 4.7 Tables and figures
-
-Run in this order (the first command creates `paper/tables/`).
-
-```bash
-uv run python scripts/make_v2_tables.py
-uv run python scripts/report_per_corruption.py
-uv run python scripts/make_v3_tables.py
-uv run python scripts/make_v4_tables.py
-uv run python scripts/make_v5_tables.py
-uv run python scripts/make_ablation_tables.py
-for w in frontier teaser restorers bound; do uv run python scripts/make_v2_figures.py $w; done
-uv run python scripts/make_teaser.py inc in_effnet_b0 fog:4 2027 v2    # Figure 1
-uv run python scripts/make_fig_realcam.py                              # real camera figure
-uv run python scripts/make_fig_heldout.py                              # held-out models
-uv run python scripts/make_fig_forest.py                               # every pre-registered comparison
-uv run python scripts/make_fig_uncurated.py inc
-uv run python scripts/make_fig_uncurated.py es
-uv run python scripts/make_qualitative.py
-```
-
 ---
